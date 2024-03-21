@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class HaikuChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String phrase1 = scanner.nextLine().toLowerCase();
+        String phrase2 = scanner.nextLine().toLowerCase();
+        String phrase3 = scanner.nextLine().toLowerCase();
+
+        int vowelCount1 = countVowels(phrase1);
+        int vowelCount2 = countVowels(phrase2);
+        int vowelCount3 = countVowels(phrase3);
+
+        if (vowelCount1 == 5 && vowelCount2 == 7 && vowelCount3 == 5) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    public static int countVowels(String phrase) {
+        int count = 0;
+        for (char c : phrase.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+}
