@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class ArmyPromotion {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt(); // Number of ranks
+
+        int[] promotionTimes = new int[n - 1];
+        for (int i = 0; i < n - 1; i++) {
+            promotionTimes[i] = scanner.nextInt(); // Time to promote from rank i to i + 1
+        }
+
+        int currentRank = scanner.nextInt();
+        int desiredRank = scanner.nextInt();
+
+        // Calculate total promotion time from rank 1 to the desired rank
+        int totalPromotionTimeToDesired = 0;
+        for (int i = 0; i < desiredRank - 1; i++) {
+            totalPromotionTimeToDesired += promotionTimes[i];
+        }
+
+        // Calculate total promotion time from rank 1 to the current rank
+        int totalPromotionTimeToCurrent = 0;
+        for (int i = 0; i < currentRank - 1; i++) {
+            totalPromotionTimeToCurrent += promotionTimes[i];
+        }
+
+        // Find the remaining promotion time
+        int remainingPromotionTime = totalPromotionTimeToDesired - totalPromotionTimeToCurrent;
+
+        System.out.println(remainingPromotionTime);
+    }
+}
